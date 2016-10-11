@@ -1,0 +1,39 @@
+<div class="container" style="margin-bottom: 50px;">
+
+   <div class="row">
+      <div class="col-sm-1 col-md-2 col-lg-2"></div>
+
+      <div class="col-sm-10 col-md-8 col-lg-8">
+         <h1>Bảng xếp hạng ngày</h1>
+         <p>
+            Bảng xếp hạng tự động 10 thính giả có đáp án nhanh nhất và chính xác nhất hôm nay.
+         </p>
+         <table class="table chart" style="margin-top: 30px;">
+            <tr>
+               <th>#</th>
+               <th>Thính giả</th>
+               <th>Đáp án đúng</th>
+            </tr>
+            <tr ng-if="!chartCtrl.chartDay">
+               <td colspan="3"Đang tải ...</td>
+            </tr>
+			<tr ng-if="chartCtrl.chartDay.length < 1">
+               <td colspan="3">Chưa có dữ liệu!</td>
+            </tr>
+            <tr ng-if="chartCtrl.chartDay" ng-repeat="record in chartCtrl.chartDay track by $index" class="chart-no-{{($index + 1)}}">
+               <td class="chart-no-{{($index + 1)}}">{{($index + 1)}}</td>
+               <td>
+                  <h2>{{record.userData.name}}</h2>
+                  <p>
+                     {{record.time}} &middot; <strong>{{record.timing}}</strong> giây
+                  </p>
+               </td>
+               <td style="color: #777;"><strong style="font-size: 1.7em; color: #000;">{{record.right}}</strong> /3</td>
+            </tr>
+         </table>
+      </div>
+
+      <div class="col-sm-1 col-md-2 col-lg-2"></div>
+   </div>
+
+</div>

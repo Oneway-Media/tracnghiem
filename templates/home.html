@@ -1,0 +1,20 @@
+<div class="container" style="margin-bottom: 50px;">
+
+   <div class="row">
+      <div class="col-sm-1 col-md-2 col-lg-2"></div>
+
+      <div class="col-sm-10 col-md-8 col-lg-8">
+         <h1>{{homeCtrl.tnhn.title}}</h1>
+         <div style="margin:30px auto;">
+            <audio style="width: 100%;" src="{{helpers.trustSrc(homeCtrl.tnhn.src)}}" controls></audio>
+         </div>
+         <div ng-bind-html="homeCtrl.tnhn.content" class="tnhn-content"></div>
+         <div class="" ng-if="!alreadyDone">
+            <button type="button" class="btn btn-primary" ui-sref="quiz">LÀM TRẮC NGHIỆM NGAY!</button>
+         </div>
+      </div>
+
+      <div class="col-sm-1 col-md-2 col-lg-2"></div>
+   </div>
+
+</div>

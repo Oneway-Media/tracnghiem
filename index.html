@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Oneway &mdash; Trắc nghiệm Tĩnh Nguyện Hằng Ngày</title>
+
+   <!-- css -->
+   <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
+   <!-- <link rel="stylesheet" href="https://bootswatch.com/yeti/bootstrap.min.css"> -->
+   <link rel="stylesheet" href="css/yeti-bootstrap.min.css">
+   <link rel="stylesheet" href="css/app.css">
+
+   <!-- angular -->
+   <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+   <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min.js"></script> -->
+   <script type="text/javascript" src="js/angular-sanitize.min.js"></script>
+
+   <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+   <script type="text/javascript" src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+
+   <!-- libs -->
+   <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+   <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="bower_components/cryptojs/rollups/hmac-sha256.js"></script>
+   <script type="text/javascript" src="bower_components/cryptojs/components/enc-base64-min.js"></script>
+   <script type="text/javascript" src="bower_components/spin.js/spin.min.js"></script>
+
+   <!-- js -->
+   <script type="text/javascript" src="js/services.js"></script>
+   <script type="text/javascript" src="js/controllers.js"></script>
+   <script type="text/javascript" src="js/app.js"></script>
+</head>
+<body ng-app="app" ng-controller="AppCtrl as app">
+
+   <div id="loading-container"><span id="loading-spiner"></span></div>
+
+   <!-- <route-loading-indicator></route-loading-indicator> -->
+
+   <nav class="navbar navbar-default">
+       <div class="container">
+           <!-- Brand and toggle get grouped for better mobile display -->
+           <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                   <span class="sr-only">Toggle navigation</span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" ui-sref="home">Trắc nghiệm</a>
+           </div>
+
+           <!-- Collect the nav links, forms, and other content for toggling -->
+           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+             <ul class="nav navbar-nav navbar-left">
+                 <li><a ui-sref="chart">Bảng xếp hạng</a></li>
+                 <li ng-if="!alreadyDone"><a ui-sref="quiz">Làm bài</a></li>
+                 <li ng-if="user"><a ui-sref="history">Lịch sử</a></li>
+            </ul>
+
+               <ul class="nav navbar-nav navbar-right" ng-if="user">
+                  <li class="dropdown">
+                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user.name}} <span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                       <li><a href="{{servers.user}}/profile">{{user.email}}</a></li>
+                       <li role="separator" class="divider"></li>
+                       <li><a href="javascript:;" ng-click="app.logout()">Đăng xuất</a></li>
+                     </ul>
+                  </li>
+               </ul>
+               <ul class="nav navbar-nav navbar-right" ng-if="!user">
+                  <li><a href="{{servers.user}}/account/login?continue={{credentials.user.id}}">Đăng nhập</a></li>
+                  <li><a href="{{servers.user}}/account/register?continue={{credentials.user.id}}">Đăng ký</a></li>
+               </ul>
+           </div>
+           <!-- /.navbar-collapse -->
+       </div>
+       <!-- /.container-fluid -->
+   </nav>
+
+   <main ui-view></main>
+
+   <footer class="container">
+      <div class="row">
+         <div class="col-md-12">
+         &copy; Oneway Media VN. Under construction!
+         </div>
+      </div>
+   </footer>
+
+
+</body>
+</html>

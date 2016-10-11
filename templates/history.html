@@ -1,0 +1,53 @@
+<div class="container" style="margin-bottom: 50px;">
+   <div class="row">
+      <div class="col-sm-1 col-md-2 col-lg-2"></div>
+
+      <div class="col-sm-10 col-md-8 col-lg-8">
+
+         <ul style="list-style: none;">
+            <li ng-repeat="his in historyCtrl.history">
+               <h3 ng-click="historyCtrl.viewDetail(his._id)">{{his.title}} <span class="btn btn-link" data-toggle="modal" data-target=".bs-detail-modal" style="margin-bottom: 0;">Chi tiết</span></h3>
+               <p style="color: #777;"><em>Nộp vào: {{helpers.toDate(his.resultDate)}}, làm trong <strong>{{his.timing}}</strong> giây.</em></p>
+            </li>
+         </ul>
+
+
+         <div class="modal fade bs-detail-modal" tabindex="-1" role="dialog" aria-labelledby="Confirm dialog">
+           <div class="modal-dialog">
+             <div class="modal-content">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Chi tiết <span style="font-size: .9em;">&mdash;
+                     <em class="answer-right">Đúng</em> /
+                     <em class="answer-wrong">Sai</em></span>
+                  </h4>
+               </div>
+
+               <div class="modal-body">
+					<h3 style="margin: 0 0 30px;">{{historyCtrl.detailHistory.title}}</h3>
+                  <ul style="list-style: none; margin-left: 30px; padding: 0;">
+                     <li ng-repeat="ques in historyCtrl.detailHistory.questions track by $index" style="margin-bottom: 30px;">
+                        <h4>{{$index + 1}}. {{ques.title}}</h4>
+                        <p ng-repeat="ans in ques.answers" ng-class="{'answer-right': ans.status == 1, 'answer-wrong': ans.status == -1 }">
+                           <em style="text-transform: uppercase;">{{ans.name.substr(0,1)}}</em>.
+                           {{ans.title}}
+                        </p>
+                     </li>
+                  </ul>
+               </div>
+
+               <div class="modal-footer">
+
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+               </div>
+             </div>
+           </div>
+         </div>
+
+
+
+      </div>
+
+      <div class="col-sm-1 col-md-2 col-lg-2"></div>
+   </div>
+</div>

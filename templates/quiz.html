@@ -1,0 +1,129 @@
+<div class="container" style="margin-bottom: 50px;">
+   <div class="row">
+      <div class="col-sm-1 col-md-2 col-lg-2"></div>
+
+      <div class="col-sm-10 col-md-8 col-lg-8" ng-if="alreadyDone">
+         Cám ơn quý vị đã tham gia trả lời câu hỏi. Đáp án sẽ được đăng tải trong nội dung TNHN ngày kế tiếp.
+      </div>
+
+      <!-- <div class="col-sm-10 col-md-8 col-lg-8" ng-if="!quiz && !alreadyDone">
+         Hiện chưa có bài tập nào, vui lòng trở lại sau.
+      </div> -->
+
+      <div class="col-sm-10 col-md-8 col-lg-8" ng-if="quiz  && !alreadyDone">
+         <!-- <div class="alert alert-info" role="alert">Nhấn vào đáp án đúng để chọn.</div> -->
+
+         <p>
+            <img ng-src="{{quizCtrl.tnhn.cover}}" alt="{{quizCtrl.tnhn.title}}" style="width:100%; max-width:700px;" />
+         </p>
+         <p>Nghe Tĩnh nguyện Hằng ngày hôm na: <strong><a ui-sref="home">{{quizCtrl.tnhn.title}}!</a></strong></p>
+
+
+         <h3 class="page-header">
+            <span>Bài tập: </span><strong>"{{quiz.title}}"</strong>
+            <span class="badge badge-primary" style="font-size: .5em;">{{helpers.invertDate(quiz.date)}}</span>
+            <em style="float:right;font-size:14px;">Thời gian làm bài: <strong>{{choice.timing}}</strong> giây</em>
+         </h3>
+
+         <ul class="questions">
+
+
+
+            <li>
+               <h3>
+                  1. {{quiz.questions.one.title}}
+                  <!-- <span class="badge" style="text-transform: uppercase;">{{choice.one}}</span> -->
+               </h3>
+               <ul class="answers">
+                  <li ng-click="quizCtrl.choose('one', 'alpha', $event)" ng-class="{active: choice.one === 'alpha'}"> A. {{quiz.questions.one.answers.alpha}}</li>
+                  <li ng-click="quizCtrl.choose('one', 'bravo')" ng-class="{active: choice.one === 'bravo'}"> B. {{quiz.questions.one.answers.bravo}}</li>
+                  <li ng-click="quizCtrl.choose('one', 'charlie')" ng-class="{active: choice.one === 'charlie'}"> C. {{quiz.questions.one.answers.charlie}}</li>
+               </ul>
+            </li>
+
+
+
+            <li>
+               <h3>
+                  2. {{quiz.questions.two.title}}
+                  <!-- <span class="badge" style="text-transform: uppercase;">{{choice.two}}</span> -->
+               </h3>
+               <ul class="answers">
+                  <li ng-click="quizCtrl.choose('two', 'alpha', $event)" ng-class="{active: choice.two === 'alpha'}"> A. {{quiz.questions.two.answers.alpha}}</li>
+                  <li ng-click="quizCtrl.choose('two', 'bravo')" ng-class="{active: choice.two === 'bravo'}"> B. {{quiz.questions.two.answers.bravo}}</li>
+                  <li ng-click="quizCtrl.choose('two', 'charlie')" ng-class="{active: choice.two === 'charlie'}"> C. {{quiz.questions.two.answers.charlie}}</li>
+               </ul>
+            </li>
+
+
+
+            <li>
+               <h3>
+                  3. {{quiz.questions.three.title}}
+                  <!-- <span class="badge" style="text-transform: uppercase;">{{choice.three}}</span> -->
+               </h3>
+               <ul class="answers">
+                  <li ng-click="quizCtrl.choose('three', 'alpha', $event)" ng-class="{active: choice.three === 'alpha'}"> A. {{quiz.questions.three.answers.alpha}}</li>
+                  <li ng-click="quizCtrl.choose('three', 'bravo')" ng-class="{active: choice.three === 'bravo'}"> B. {{quiz.questions.three.answers.bravo}}</li>
+                  <li ng-click="quizCtrl.choose('three', 'charlie')" ng-class="{active: choice.three === 'charlie'}"> C. {{quiz.questions.three.answers.charlie}}</li>
+               </ul>
+            </li>
+
+
+
+         </ul>
+
+
+         <!-- <table class="table" style="margin: 70px 0 30px;">
+            <tr>
+               <th>Bài làm của bạn:</th>
+               <th>1</th>
+               <th>2</th>
+               <th>3</th>
+            </tr>
+            <tr style="text-transform: uppercase;">
+               <td>
+
+               </td>
+               <td>
+                  <strong>{{choice.one || 'n/a'}}</strong>
+               </td>
+               <td>
+                  <strong>{{choice.two || 'n/a'}}</strong>
+               </td>
+               <td>
+                  <strong>{{choice.three || 'n/a'}}</strong>
+               </td>
+            </tr>
+         </table> -->
+
+         <div style="margin-top: 30px;"><button type="button" class="btn btn-primary"  data-toggle="modal" data-target=".bs-confirm-modal-sm">NỘP BÀI</button></div>
+
+
+         <div class="modal fade bs-confirm-modal-sm" tabindex="-1" role="dialog" aria-labelledby="Confirm dialog">
+           <div class="modal-dialog modal-sm">
+             <div class="modal-content">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Nộp bài trắc nghiệm</h4>
+               </div>
+               <div class="modal-body">
+                 <p ng-if="quizCtrl.canBeFinish">Bạn đã chắc muốn nộp bài làm?</p>
+                 <div class="alert alert-danger" role="alert" ng-if="!quizCtrl.canBeFinish" style="font-size:15px;">Bạn chưa làm xong bài tập. Vui lòng trả lời tất cả câu hỏi trước khi nộp bài!</div>
+                 <div class="alert alert-info" role="info" ng-if="quizCtrl.needToLoginBeforeSubmit" style="font-size:15px;">Bạn chưa đăng nhập, vui lòng <a href="{{servers.user}}/account/login?continue={{credentials.user.id}}">đăng nhập</a>.<br>Chưa có tài khoản, vui lòng <a href="{{servers.user}}/account/register?continue={{credentials.user.id}}">đăng ký</a> và đăng nhập trước khi nộp bài.</div>
+               </div>
+
+               <div class="modal-footer" ng-if="quizCtrl.canBeFinish">
+                  <button type="button" class="btn btn-primary" ng-click="quizCtrl.finish()" ng-if="!alreadyDone">NỘP BÀI</button>
+
+                  <button type="button" class="btn btn-default" data-dismiss="modal" ng-if="!alreadyDone">Chưa chắc!</button>
+               </div>
+             </div>
+           </div>
+         </div>
+
+      </div>
+
+      <div class="col-sm-1 col-md-2 col-lg-2"></div>
+   </div>
+</div>

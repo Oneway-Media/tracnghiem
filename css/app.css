@@ -1,0 +1,104 @@
+body {
+   font-family: 'Times new roman', serif;
+   font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+   font-family: 'Times new roman', serif;
+}
+
+footer {
+   padding: 15px 0;
+   border-top: 1px solid #CCC;
+}
+
+
+/* Loading */
+#loading-container {
+   /*display: none;*/
+   position: fixed;
+   top: 0;
+   left: 0;
+   z-index: 999;
+   width: 100%;
+   height: 100%;
+   background: #FFF;
+}
+
+
+
+
+
+/* Questions */
+.questions, .answers {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+.questions li h3 {
+   margin-bottom: 15px;
+   font-size: 16px;
+}
+.questions li ul.answers {
+   margin-left: 15px;
+   font-size: 12px;
+}
+.questions li ul.answers li {
+   margin: 10px 0;
+   cursor: pointer;
+}
+.questions li ul.answers li.active {
+   font-weight: bold;
+   color: #f04124;
+}
+
+
+/* TNHN content */
+.tnhn-content {
+   width: 100%;
+}
+.tnhn-content img {
+   width: 100%;
+   max-width: 950px;
+   height: auto;
+}
+
+
+
+/* history style */
+.answer-right, .answer-wrong {
+   font-weight: bold;
+}
+.answer-right {
+   color: green;
+}
+.answer-wrong {
+   color: #f04124;
+}
+
+
+
+
+/* chart */
+.chart h2 {
+   margin: 5px 0 10px;
+   font-size: 1.4em;
+}
+.chart-no-1 td:first-child, .chart-no-1 h2 {
+   font-size: 1.7em;
+   color: #f04124;
+   font-weight: bold;
+}
+.chart-no-2 td:first-child, .chart-no-2 h2 {
+   font-size: 1.6em;
+   color: #43ac6a;
+   font-weight: bold;
+}
+.chart-no-3 td:first-child, .chart-no-3 h2 {
+   font-size: 1.5em;
+   color: #e99002;
+   font-weight: bold;
+}
+.chart p {
+   color: #777;
+}
