@@ -8,9 +8,17 @@ body {
 h1, h2, h3, h4, h5, h6 {
    font-family: Roboto,Arial, sans-serif;
 }
-h1 {
-   font-size: 30px;
-   color: #0b9fd0;
+
+.tnhn-content h1 {
+   text-align: center!important;
+}
+
+.tnhn-content h1 span{
+   font-family: Arial;
+   font-size: 26px;
+   font-weight: 700;
+   color: #259EE0;
+
 }
 
 main {
@@ -22,8 +30,8 @@ footer {
    z-index: 10;
    border-top: 1px solid #CCC;
    width: 100%;
-   min-height: 200px;
-   background-color: #060c13;
+   min-height: 250px;
+   background-color: #404c5a;
    bottom: 0;
 }
 
@@ -130,7 +138,7 @@ footer {
 
 .navbar {
    min-height: 100px;
-   background-color: #060c13;
+   background-color: #404c5a;
 }
 
 .navbar-header, .navbar-collapse {
@@ -139,10 +147,10 @@ footer {
 }
 
 .navbar-nav li a {
-   background-color: #060c13;
+   background-color: #404c5a;
 }
 
-.navbar-nav li a:hover, .navbar-nav li a:active, .navbar-nav li a:focus, .navbar-nav li a:visited {
+.navbar-nav li a:hover, .navbar-nav li a:active, .navbar-nav li a:focus {
    background-color: #1a3148!important;
 }
 
