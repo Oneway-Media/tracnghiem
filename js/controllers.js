@@ -1,5 +1,6 @@
 angular.module('app.controllers', [])
 
+
 .controller('AppCtrl', function ($rootScope, localStorageService, $state, userAPI) {
 
    // check if login information availble in localstorage
@@ -43,6 +44,17 @@ angular.module('app.controllers', [])
       });
    }
 })
+
+.filter('filterTitle', function(){
+   return function(x){
+      var i, c, txt = "";
+      var string = x.split(": ");
+      var getEle = document.querySelector(".tnhn-title");
+      return getEle.innerHTML = string[0] + ": " + "<span style='color:#0ee3e4;' >" + string[1] + "</span>"
+   };
+
+})
+
 
 .controller('LoginCtrl', function ($rootScope, $stateParams, $state, localStorageService, userAPI) {
 
