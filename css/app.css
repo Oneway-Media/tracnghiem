@@ -206,6 +206,12 @@ address p {
    word-spacing: 0px;
 }
 
+.tnhn-date {
+   font-family: Arial, sans-serif;
+   font-size: 12px;
+   word-spacing: 1px;
+}
+
 .navbar {
    min-height: 100px;
    background-color: #404c5a;

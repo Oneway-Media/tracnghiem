@@ -5,7 +5,9 @@
 
       <div class="col-sm-4 col-md-4 col-lg-4" style="float: right;">
          <h3 class="tnhn-title">{{homeCtrl.tnhn.title | filterTitle}}</h3>
-         <hr>
+         <hr style="margin-bottom: 5px;">
+
+         <p class="tnhn-date"><b>Ngày đăng: </b>{{homeCtrl.tnhn.date | datetime}}</p>
          <div style="margin:30px auto;">
             <audio style="width: 100%;" src="{{helpers.trustSrc(homeCtrl.tnhn.src)}}" controls></audio>
          </div>

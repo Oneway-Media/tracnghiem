@@ -55,6 +55,13 @@ angular.module('app.controllers', [])
 
 })
 
+.filter('datetime', function($filter) {
+    return function(input) {
+     if(input == null){ return ""; } 
+     var _date = $filter('date')(new Date(input), 'dd-MM-yyyy - HH:mm:ss');
+     return _date.toUpperCase();
+    };
+})
 
 .controller('LoginCtrl', function ($rootScope, $stateParams, $state, localStorageService, userAPI) {
 
