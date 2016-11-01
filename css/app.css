@@ -211,7 +211,7 @@ address p {
    }
 }
 
-@media(max-width: 444px){
+@media(min-width: 379px) and (max-width: 444px){
    .tnhn-title span {
       padding: 15px;
    }
