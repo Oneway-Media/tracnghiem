@@ -50,7 +50,7 @@ angular.module('app.controllers', [])
       var i, c, txt = "";
       var string = x.split(": ");
       var getEle = document.querySelector(".tnhn-title");
-      return getEle.innerHTML = string[0] + ": " + "<span style='color:#0ee3e4;' >" + string[1] + "</span>"
+      return getEle.innerHTML = string[0] + ": " + "<span style='color:#0ee3e4;'>" + string[1] + "</span>"
    };
 
 })
@@ -58,7 +58,7 @@ angular.module('app.controllers', [])
 .filter('datetime', function($filter) {
     return function(input) {
      if(input == null){ return ""; } 
-     var _date = $filter('date')(new Date(input), 'dd-MM-yyyy - HH:mm:ss');
+     var _date = $filter('date')(new Date(input), 'dd-MM-yyyy -- HH:mm:ss');
      return _date.toUpperCase();
     };
 })
